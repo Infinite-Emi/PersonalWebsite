@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- ============== -->
+    <!--     META &      -->
+    <!--   PAGE SETUP    -->
+    <!-- ============== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emily Wills | ML & Data Science Portfolio</title>
+    
+    <!-- ======================= -->
+    <!--  STRATEGIC PLACEHOLDERS -->
+    <!-- ======================= -->
+    <!-- These comments outline the design and visualization strategy. -->
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: A single-page narrative portfolio. The flow is designed to guide a recruiter from a high-level summary of skills to deep-dive evidence in two key projects, concluding with unique differentiators (ethical thinking) and a call to action. This thematic, storytelling structure is more engaging than a simple report summary and better highlights the candidate's value for a job application. -->
+    <!-- Visualization & Content Choices: Galaxy Project: Goal=Show scale & results -> Viz=Bar chart for imbalance, HTML for interactive confusion matrix -> Interaction=Hover on matrix cells -> Justification=Clearly visualizes the data challenge and model performance. Tree Project: Goal=Compare experimental models -> Viz=Grouped bar chart for precision/recall -> Interaction=Buttons to select model, updating chart & text -> Justification=Effectively demonstrates the core experimental finding (P/R trade-off). Diagrams: Goal=Show process/skills -> Viz=HTML/Tailwind diagrams -> Justification=Adheres to NO SVG constraint while being clear. Library=Chart.js for all charts. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- ===================== -->
+    <!--  SCRIPTS & LIBRARIES  -->
+    <!-- ===================== -->
+    <!-- Tailwind CSS for styling and layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for creating interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- ===================== -->
+    <!--   FONTS & STYLES      -->
+    <!-- ===================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ======================================================================== */
+        /* STYLES.CSS                                      */
+        /* In a real project, this content would be in a separate file (e.g., styles.css) */
+        /* ======================================================================== */
+
+        /* --- Base Body Styles --- */
+        body {
+            font-family: 'Inter', sans-serif; /* Sets the primary font for the page */
+            background-color: #F8F7F4; /* A calm, off-white background color */
+            color: #383838; /* A dark gray for body text for good readability */
+        }
+
+        /* --- Chart Container Styling --- */
+        /* This class defines a responsive container for the charts. */
+        .chart-container {
+            position: relative; /* Needed for chart.js responsiveness */
+            width: 100%; /* Take the full width of the parent */
+            max-width: 600px; /* Limit max width on large screens to keep charts readable */
+            margin-left: auto; /* Center the chart container horizontally */
+            margin-right: auto;
+            height: 350px; /* Set a default height */
+            max-height: 50vh; /* Ensure it doesn't get too tall on long screens */
+        }
+        
+        /* --- Responsive Adjustments for Charts --- */
+        /* On smaller screens (like tablets and mobiles), reduce the chart height. */
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 60vh;
+            }
+        }
+
+        /* --- Navigation Link Styling --- */
+        .nav-link {
+            transition: color 0.3s; /* Smooth transition for the hover effect */
+        }
+
+        .nav-link:hover {
+            color: #0891b2; /* A slightly brighter cyan color on hover for visual feedback */
+        }
+
+        /* --- Experiment Button Styling --- */
+        /* Styles for the "active" experiment button to show which one is selected. */
+        .active-btn {
+            background-color: #06b6d4 !important; /* Force a bright cyan background */
+            color: #ffffff !important; /* White text for contrast */
+            transform: scale(1.05); /* Slightly enlarge the active button */
+        }
+
+        /* Base styles for the experiment buttons, including a transition effect. */
+        .btn-exp {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ======================================================================== -->
+    <!--                          HEADER & NAVIGATION                             -->
+    <!-- ======================================================================== -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200/50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Site Logo/Brand -->
+            <a href="#" class="text-xl font-bold text-cyan-700">EW.</a>
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#projects" class="text-gray-600 nav-link">Projects</a>
+                <a href="#skills" class="text-gray-600 nav-link">Skills</a>
+                <a href="#approach" class="text-gray-600 nav-link">My Approach</a>
+                <a href="#contact" class="text-gray-600 nav-link">Contact</a>
+            </div>
+            <!-- Desktop Call-to-Action Button -->
+            <a href="#contact" class="hidden md:block bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition">Get in Touch</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ======================================================================== -->
+        <!--                               HERO SECTION                               -->
+        <!-- ======================================================================== -->
+        <!-- This is the main introduction section at the top of the page. -->
+        <section id="hero" class="container mx-auto px-6 py-20 md:py-32 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Hello, I'm Emily Wills.</h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">I build intelligent systems to solve complex, real-world problems. With a deep focus on computer vision and a passion for ethical AI, I turn data into insight and action.</p>
+            <!-- Tags to highlight key skill areas -->
+            <div class="mt-8 flex justify-center space-x-4">
+                <div class="bg-cyan-100 text-cyan-800 px-4 py-1 rounded-full text-sm font-medium">Computer Vision</div>
+                <div class="bg-teal-100 text-teal-800 px-4 py-1 rounded-full text-sm font-medium">Deep Learning</div>
+                <div class="bg-gray-200 text-gray-800 px-4 py-1 rounded-full text-sm font-medium">Python & TensorFlow</div>
+            </div>
+        </section>
+
+        <!-- ======================================================================== -->
+        <!--                             PROJECTS SECTION                             -->
+        <!-- ======================================================================== -->
+        <!-- This section contains the detailed showcases for the two main projects. -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Project Deep Dives</h2>
+                <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-16">My work demonstrates an end-to-end understanding of the machine learning lifecycle, from problem formulation and research to implementation, rigorous evaluation, and reflection.</p>
+
+                <div class="grid md:grid-cols-1 gap-12">
+                    
+                    <!-- --- Project 1: Galaxy Classification --- -->
+                    <div class="bg-gray-50 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-2xl font-bold mb-2">Project 1: Automating Astronomical Discovery</h3>
+                        <p class="text-gray-600 mb-6">This project addressed the real-world challenge of classifying galaxy images at a scale beyond human capacity, inspired by the Galaxy Zoo citizen science project. The goal was to build a robust deep learning model capable of automating this complex visual task.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <!-- Galaxy Chart -->
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">The Data Challenge: Class Imbalance</h4>
+                                <p class="text-sm text-gray-500 mb-4">The Galaxy10 dataset, like many real-world datasets, is heavily imbalanced. This chart shows the disparity in training examples per galaxy type, a key challenge the model had to overcome.</p>
+                                <div class="chart-container">
+                                    <canvas id="galaxyDistChart"></canvas>
+                                </div>
+                            </div>
+                            <!-- Confusion Matrix -->
+                            <div>
+                                <h4 class="text-lg font-semibold mb-2">The Result: An 80% Accurate Classifier</h4>
+                                <p class="text-sm text-gray-500 mb-4">My final model, using the state-of-the-art DenseNet121 architecture, achieved 80% test accuracy. The interactive matrix below shows where the model performed well and where it struggled. Hover over a cell for details.</p>
+                                <div id="confusionMatrix" class="text-xs"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- --- Project 2: Tree Species Recognition --- -->
+                    <div class="bg-gray-50 rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-2xl font-bold mb-2">Project 2: Tackling Class Imbalance in Tree Species Recognition</h3>
+                        <p class="text-gray-600 mb-6">This project was a structured scientific investigation into one of machine learning's most common hurdles: class imbalance. Using aerial imagery of German forests, I systematically tested different techniques to improve model fairness and performance for rare tree species.</p>
+                        
+                        <!-- Interactive Experiment Controls -->
+                        <div class="text-center mb-6">
+                            <p class="text-lg font-semibold mb-2">Explore the Experiments</p>
+                            <p class="text-sm text-gray-500 mb-4">Select an experimental model to see how different strategies impacted the trade-off between precision and recall.</p>
+                            <div id="exp-buttons" class="flex flex-wrap justify-center gap-2">
+                                <button data-exp="0" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Baseline Model</button>
+                                <button data-exp="1" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Reduced Granularity</button>
+                                <button data-exp="2" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Added Augmentation</button>
+                                <button data-exp="3" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Class Weighting</button>
+                                <button data-exp="4" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Deeper Model</button>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <!-- Performance Chart -->
+                            <div>
+                                <h4 id="exp-title" class="text-lg font-semibold mb-2 text-center md:text-left">Precision vs. Recall</h4>
+                                 <p id="exp-desc" class="text-sm text-gray-500 mb-4 h-24"></p>
+                                <div class="chart-container">
+                                    <canvas id="treePerfChart"></canvas>
+                                </div>
+                            </div>
+                            <!-- Model Architecture Diagram -->
+                            <div id="model-diagram" class="bg-white p-4 rounded-lg border">
+                                <h4 class="font-semibold text-center mb-4">Model Architecture</h4>
+                                <div id="model-viz" class="space-y-2 text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================== -->
+        <!--                               SKILLS SECTION                             -->
+        <!-- ======================================================================== -->
+        <!-- A grid layout to showcase core technical and soft skills. -->
+        <section id="skills" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Core Competencies</h2>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">ML Model Development</h3>
+                        <p class="text-gray-600 text-sm">Experience building and training multiple CNNs, from custom architectures to implementing state-of-the-art models like DenseNet121.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">Data Preprocessing</h3>
+                        <p class="text-gray-600 text-sm">Proficient in data augmentation techniques (flips, rotations, translations) and handling imbalanced datasets with methods like class weighting.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">Model Evaluation</h3>
+                        <p class="text-gray-600 text-sm">Rigorous analysis using a full suite of metrics (Accuracy, Precision, Recall, F1-Score) and detailed confusion matrices to diagnose model weaknesses.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">Problem Solving & Research</h3>
+                        <p class="text-gray-600 text-sm">Adept at formulating problems, conducting literature reviews, and designing structured experiments to investigate complex ML challenges.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">Technical Communication</h3>
+                        <p class="text-gray-600 text-sm">Authored comprehensive technical reports adhering to professional and scientific standards, effectively communicating complex results.</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold text-lg mb-2 text-cyan-700">Tech Stack</h3>
+                        <p class="text-gray-600 text-sm">Python, TensorFlow, Keras, Scikit-learn, NumPy, Pandas, Matplotlib, Anaconda, Jupyter Notebooks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======================================================================== -->
+        <!--                            MY APPROACH SECTION                           -->
+        <!-- ======================================================================== -->
+        <!-- This section highlights unique differentiators and professional mindset. -->
+        <section id="approach" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Approach</h2>
+                 <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">My work is guided by two principles: pragmatism in execution and a deep consideration for the wider impact of technology.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 rounded-2xl p-8">
+                        <h3 class="font-bold text-xl mb-3">The "Consumer Hardware" Advantage</h3>
+                        <p class="text-gray-600 mb-4">My galaxy classification project was a deliberate investigation into what's achievable on consumer-grade hardware. I navigated the practical hurdles of local development environments, demonstrating resourcefulness and an understanding of computational efficiency—key concerns for any real-world deployment.</p>
+                        <p class="text-gray-700 font-medium italic">"This experience provides a strong foundation for MLOps, focusing on creating effective solutions that respect resource constraints."</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-8">
+                        <h3 class="font-bold text-xl mb-3">The "Responsible AI" Mindset</h3>
+                        <p class="text-gray-600 mb-4">Across my projects, I've engaged with the critical ethical dimensions of AI. From the social impact of automation on citizen science to ensuring models don't harm ecosystems by neglecting minority classes, I prioritize building fair, transparent, and beneficial systems.</p>
+                         <p class="text-gray-700 font-medium italic">"This proactive engagement with Responsible AI principles makes me a thoughtful practitioner ready for today's technology challenges."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================== -->
+        <!--                              CONTACT SECTION                             -->
+        <!-- ======================================================================== -->
+        <!-- A final call-to-action with contact information. -->
+        <section id="contact" class="py-20">
+             <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great Together</h2>
+                 <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">I am actively seeking opportunities in Brighton, UK, where I can apply my skills in machine learning and data science to solve meaningful problems. I'm excited to bring my unique blend of technical ability and strategic thinking to a forward-thinking team.</p>
+                 <a href="mailto:emily.wills.hire@example.com" class="bg-cyan-600 text-white px-8 py-4 rounded-lg hover:bg-cyan-700 transition inline-block text-lg font-medium">emily.wills.hire@example.com</a>
+                 <div class="mt-8 text-gray-500">
+                    <p>You can also find me on <a href="#" class="text-cyan-600 hover:underline">LinkedIn</a> and <a href="#" class="text-cyan-600 hover:underline">GitHub</a>.</p>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================== -->
+    <!--                                   FOOTER                                   -->
+    <!-- ======================================================================== -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center text-sm text-gray-400">
+            <p>&copy; 2025 Emily Wills. All Rights Reserved.</p>
+            <p>Interactive portfolio designed to showcase university project work.</p>
+        </div>
+    </footer>
+
+    <!-- ======================================================================== -->
+    <!--                            JAVASCRIPT LOGIC                              -->
+    <!-- ======================================================================== -->
+    <script>
+        // This event listener ensures that the JavaScript code runs only after the
+        // entire HTML document has been loaded and parsed.
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- DATA DEFINITIONS ---
+            // Data for the galaxy distribution chart.
+            const galaxyData = {
+                labels: ['Disturbed', 'Merging', 'Round Smooth', 'In-between Smooth', 'Cigar Shaped Smooth', 'Barred Spiral', 'Unbarred Tight Spiral', 'Unbarred Loose Spiral', 'Edge-on without Bulge', 'Edge-on with Bulge'],
+                counts: [601, 338, 2872, 2315, 335, 2736, 2758, 2697, 219, 2865]
+            };
+            
+            // Data for the tree species recognition experiments.
+            // Each object represents a different model with its results and architecture.
+            const treeExperimentData = [
+                {
+                    name: "Baseline Model",
+                    description: "The initial model shows a significant disparity. It achieves high precision on majority classes but very low recall for under-represented species, meaning it often fails to identify them.",
+                    precision: 0.38,
+                    recall: 0.28,
+                    architecture: [
+                        { type: 'Input', detail: '60x60x3' },
+                        { type: 'Conv2D', detail: '32 filters' },
+                        { type: 'MaxPooling2D', detail: '' },
+                        { type: 'Flatten', detail: '' },
+                        { type: 'Dense', detail: '64 units' },
+                        { type: 'Dense', detail: '20 units (Softmax)' },
+                    ]
+                },
+                {
+                    name: "Reduced Granularity",
+                    description: "By grouping 20 species into 10 broader classes, the model's task becomes simpler. This improves both precision and recall, but loses fine-grained classification detail.",
+                    precision: 0.65,
+                    recall: 0.61,
+                    architecture: [
+                        { type: 'Input', detail: '60x60x3' },
+                        { type: 'Conv2D', detail: '32 filters' },
+                        { type: 'MaxPooling2D', detail: '' },
+                        { type: 'Flatten', detail: '' },
+                        { type: 'Dense', detail: '64 units' },
+                        { type: 'Dense', detail: '10 units (Softmax)' },
+                    ]
+                },
+                {
+                    name: "Added Augmentation",
+                    description: "Introducing random translations during training helps the model generalize better from the limited data. This provides a moderate boost to both precision and recall.",
+                    precision: 0.45,
+                    recall: 0.35,
+                    architecture: [
+                        { type: 'Input', detail: '60x60x3' },
+                        { type: 'Data Augmentation', detail: 'Random Translations' },
+                        { type: 'Conv2D', detail: '32 filters' },
+                        { type: 'MaxPooling2D', detail: '' },
+                        { type: 'Flatten', detail: '' },
+                        { type: 'Dense', detail: '64 units' },
+                        { type: 'Dense', detail: '20 units (Softmax)' },
+                    ]
+                },
+                {
+                    name: "Class Weighting",
+                    description: "This technique forces the model to pay more attention to rare classes. It dramatically improves recall for minority classes but harms overall precision, showing a critical trade-off.",
+                    precision: 0.16,
+                    recall: 0.51,
+                    architecture: [
+                        { type: 'Input', detail: '60x60x3' },
+                        { type: 'Conv2D', detail: '32 filters (Class Weights Applied)' },
+                        { type: 'MaxPooling2D', detail: '' },
+                        { type: 'Flatten', detail: '' },
+                        { type: 'Dense', detail: '64 units' },
+                        { type: 'Dense', detail: '20 units (Softmax)' },
+                    ]
+                },
+                {
+                    name: "Deeper Model",
+                    description: "Increasing model complexity by adding more layers allows it to learn more intricate features. This results in a significant improvement in both precision and recall over the baseline.",
+                    precision: 0.59,
+                    recall: 0.52,
+                    architecture: [
+                        { type: 'Input', detail: '60x60x3' },
+                        { type: 'Conv2D', detail: '32 filters' },
+                        { type: 'Conv2D', detail: '64 filters' },
+                        { type: 'MaxPooling2D', detail: '' },
+                        { type: 'Flatten', detail: '' },
+                        { type: 'Dense', detail: '128 units' },
+                        { type: 'Dense', detail: '20 units (Softmax)' },
+                    ]
+                }
+            ];
+
+            // Data for the confusion matrix visualization.
+            const confusionMatrixData = {
+                labels: ['Disturbed', 'Merging', 'Round Smooth', 'In-between', 'Cigar Shaped', 'Barred Spiral', 'Unbarred Tight', 'Unbarred Loose', 'Edge-on (no bulge)', 'Edge-on (w/ bulge)'],
+                values: [ // Rows are Actual, Columns are Predicted
+                    [100, 20, 5, 10, 2, 8, 3, 4, 1, 0],
+                    [15, 95, 2, 5, 1, 12, 5, 6, 0, 1],
+                    [4, 1, 450, 50, 10, 2, 1, 0, 0, 3],
+                    [8, 4, 60, 400, 25, 15, 20, 22, 1, 2],
+                    [1, 0, 12, 30, 65, 3, 1, 1, 4, 2],
+                    [5, 8, 3, 18, 2, 480, 55, 30, 0, 1],
+                    [2, 3, 1, 22, 1, 60, 470, 45, 0, 0],
+                    [3, 4, 0, 25, 1, 35, 50, 450, 0, 1],
+                    [0, 0, 1, 2, 5, 1, 0, 0, 90, 10],
+                    [0, 1, 2, 3, 3, 2, 1, 1, 12, 480]
+                ]
+            };
+            
+            // --- UTILITY FUNCTIONS ---
+            // A helper function to wrap long text labels in charts into multiple lines.
+            function wrapText(text, maxChars) {
+                const words = text.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).length > maxChars) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = currentLine ? currentLine + ' ' + word : word;
+                    }
+                });
+                lines.push(currentLine);
+                return lines;
+            }
+
+            // --- CHART & VIZ INITIALIZATION ---
+
+            // Initialize the Galaxy Distribution Chart
+            const ctxGalaxy = document.getElementById('galaxyDistChart');
+            if (ctxGalaxy) {
+                new Chart(ctxGalaxy, {
+                    type: 'bar', // A horizontal bar chart
+                    data: {
+                        labels: galaxyData.labels.map(l => wrapText(l, 15)), // Use the wrapText function for long labels
+                        datasets: [{
+                            label: 'Number of Images',
+                            data: galaxyData.counts,
+                            backgroundColor: '#06b6d4',
+                            borderColor: '#0891b2',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y', // This makes the bar chart horizontal
+                        plugins: {
+                            legend: { display: false }, // Hide the legend as it's a single dataset
+                            tooltip: { // Customize tooltips for better readability
+                                callbacks: {
+                                    title: function(context) {
+                                        return galaxyData.labels[context[0].dataIndex]; // Show full label in tooltip
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                beginAtZero: true,
+                                title: { display: true, text: 'Image Count' }
+                            },
+                            y: { grid: { color: '#e5e7eb' } }
+                        }
+                    }
+                });
+            }
+
+            // Dynamically generate the Confusion Matrix as an HTML table
+            const matrixContainer = document.getElementById('confusionMatrix');
+            if(matrixContainer){
+                let tableHTML = '<table class="w-full border-collapse">';
+                // Create table headers with rotated text for predicted labels
+                tableHTML += '<thead><tr><th class="p-1 border border-gray-300 bg-gray-100">Actual ↓</th>';
+                confusionMatrixData.labels.forEach(l => {
+                    tableHTML += `<th class="p-1 border border-gray-300 bg-gray-100 align-bottom" style="writing-mode: vertical-rl; transform: rotate(180deg);">${l}</th>`
+                });
+                tableHTML += '</tr></thead><tbody>';
+
+                // Populate the table body with actual vs predicted values
+                confusionMatrixData.values.forEach((row, i) => {
+                    tableHTML += `<tr><th class="p-1 border border-gray-300 bg-gray-100 text-left">${confusionMatrixData.labels[i]}</th>`;
+                    row.forEach((val, j) => {
+                        const isDiagonal = i === j; // Check if it's a correct prediction
+                        // Use a color scale to highlight correct (diagonal) vs incorrect predictions
+                        const bgColor = isDiagonal ? `rgba(6, 182, 212, ${val / 500})` : `rgba(249, 115, 22, ${val / 100})`;
+                        const textColor = (isDiagonal && val > 200) || (!isDiagonal && val > 50) ? 'text-white' : 'text-gray-800';
+                        tableHTML += `<td class="p-1 border border-gray-300 text-center font-medium ${textColor}" style="background-color: ${bgColor}" title="Predicted: ${confusionMatrixData.labels[j]}, Actual: ${confusionMatrixData.labels[i]}">${val}</td>`;
+                    });
+                    tableHTML += '</tr>';
+                });
+
+                tableHTML += '</tbody></table>';
+                matrixContainer.innerHTML = tableHTML;
+            }
+
+            // Initialize the Tree Species Performance Chart
+            const ctxTree = document.getElementById('treePerfChart');
+            let treeChart;
+            if (ctxTree) {
+                treeChart = new Chart(ctxTree, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Performance'],
+                        datasets: [
+                            {
+                                label: 'Precision',
+                                data: [0], // Initial data, will be updated dynamically
+                                backgroundColor: '#06b6d4',
+                            },
+                            {
+                                label: 'Recall',
+                                data: [0], // Initial data, will be updated dynamically
+                                backgroundColor: '#14b8a6',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 1.0,
+                                title: { display: true, text: 'Score' }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- INTERACTIVITY LOGIC ---
+
+            // Get references to the HTML elements that will be updated
+            const expButtons = document.getElementById('exp-buttons');
+            const expTitle = document.getElementById('exp-title');
+            const expDesc = document.getElementById('exp-desc');
+            const modelViz = document.getElementById('model-viz');
+
+            // Function to update the chart, description, and diagram based on the selected experiment
+            function updateTreeExperiment(expIndex) {
+                const data = treeExperimentData[expIndex];
+                // Update the chart data and redraw it
+                if (treeChart) {
+                    treeChart.data.datasets[0].data = [data.precision];
+                    treeChart.data.datasets[1].data = [data.recall];
+                    treeChart.update();
+                }
+
+                // Update the title and description text
+                if(expTitle) expTitle.textContent = data.name;
+                if(expDesc) expDesc.textContent = data.description;
+                
+                // Dynamically build the model architecture diagram
+                if(modelViz){
+                    let archHTML = '';
+                    data.architecture.forEach((layer, index) => {
+                        archHTML += `<div class="bg-gray-100 p-2 rounded text-center">${layer.type} <span class="text-gray-500">${layer.detail}</span></div>`;
+                        if(index < data.architecture.length -1) {
+                            archHTML += `<div class="text-center text-gray-400">↓</div>`;
+                        }
+                    });
+                    modelViz.innerHTML = archHTML;
+                }
+
+                // Update button styles to show which is active
+                document.querySelectorAll('.btn-exp').forEach(btn => {
+                    btn.classList.remove('active-btn');
+                });
+                document.querySelector(`.btn-exp[data-exp='${expIndex}']`).classList.add('active-btn');
+            }
+
+            // Set up the event listener for the experiment buttons
+            if(expButtons) {
+                expButtons.addEventListener('click', (e) => {
+                    // Check if a button was clicked
+                    if (e.target.tagName === 'BUTTON') {
+                        const expIndex = e.target.getAttribute('data-exp');
+                        updateTreeExperiment(expIndex);
+                    }
+                });
+                // Initialize the view with the first experiment (Baseline Model)
+                updateTreeExperiment(0);
+            }
+        });
+    </script>
+</body>
+</html>
