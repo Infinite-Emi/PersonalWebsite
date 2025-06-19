@@ -101,7 +101,11 @@
                 <a href="assets/EmilyWillsCV.pdf" download class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-cyan-700 transition text-sm font-semibold">Download CV</a>
             </div>
             <div class="md:hidden">
-                 <a href="assets/EmilyWillsCV.pdf" download class="bg-cyan-600 text-white px-3 py-1.5 rounded-lg hover:bg-cyan-700 transition text-xs font-semibold">CV</a>
+                <a href="#about" class="text-slate-600 nav-link">About</a>
+                <a href="#skills" class="text-slate-600 nav-link">Skills</a>
+                <a href="#projects" class="text-slate-600 nav-link">Projects</a>
+                <a href="#contact" class="text-slate-600 nav-link">Contact</a>
+                <a href="assets/EmilyWillsCV.pdf" download class="bg-cyan-600 text-white px-3 py-1.5 rounded-lg hover:bg-cyan-700 transition text-xs font-semibold">Download CV</a>
             </div>
         </nav>
     </header>
@@ -252,8 +256,8 @@
     
     <!-- ** MODAL FIX APPLIED HERE ** -->
     <!-- Changed 'items-center' to 'items-start' and added 'pt-16' to align the modal to the top. -->
-    <div id="galaxyModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 pt-16 opacity-0 pointer-events-none" onclick="closeModal('galaxyModal')">
-        <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
+    <div id="galaxyModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('galaxyModal')">
+        <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-full overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
             <button onclick="closeModal('galaxyModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
             <h2 class="text-3xl font-bold mb-2">Project: Automating Astronomical Discovery</h2>
             <p class="text-slate-600 mb-6">This project addressed the real-world challenge of classifying galaxy images at a scale beyond human capacity, inspired by the Galaxy Zoo citizen science project. The goal was to build a robust deep learning model capable of automating this complex visual task.</p>
@@ -275,7 +279,7 @@
     </div>
 
     <!-- ** MODAL FIX APPLIED HERE ** -->
-    <div id="treeModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 pt-16 opacity-0 pointer-events-none" onclick="closeModal('treeModal')">
+    <div id="treeModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('treeModal')">
         <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
             <button onclick="closeModal('treeModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
             <h2 class="text-3xl font-bold mb-2">Project: Tackling Class Imbalance in Tree Species Recognition</h2>
@@ -308,7 +312,7 @@
     </div>
 
     <!-- ** MODAL FIX APPLIED HERE ** -->
-    <div id="salesModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center p-4 pt-16 opacity-0 pointer-events-none" onclick="closeModal('salesModal')">
+    <div id="salesModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('salesModal')">
         <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
             <button onclick="closeModal('salesModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
             <h2 class="text-3xl font-bold mb-6">Project: Electronic Sales Analysis</h2>
