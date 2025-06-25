@@ -29,7 +29,7 @@
         body {
             font-family: 'Inter', sans-serif; /* Sets the default font for the whole page. */
             background-color: #f8fafc;       /* Sets the light grey background color. */
-            color: #1e293b;                   /* Sets the default dark text color. */
+            color: #1e293b;                 /* Sets the default dark text color. */
         }
         /* Sets the font for any element with the 'font-mono' class. */
         .font-mono {
@@ -116,6 +116,8 @@
             <img src="https://placehold.co/150x150/0891b2/FFFFFF?text=EW" alt="Emily Wills" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Hello, I'm Emily Wills.</h1>
             <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">A creative and analytical technologist with a passion for building intelligent systems and solving complex problems—from financial data puzzles to the frontiers of AI.</p>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">---- Site Still Under Construction ----</p>
+
         </section>
 
         <!-- ==== ABOUT ME SECTION ==== -->
@@ -123,7 +125,6 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold">About Me</h2>
-                    <p class="text-md text-slate-500 mt-2">I build, I analyze, and I'm always learning.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
                     <div class="space-y-4">
@@ -190,12 +191,14 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold">Project Showcase</h2>
-                    <p class="text-md text-slate-500 mt-2">A selection of my recent work. Click a project for a deep dive.</p>
+                    <!-- Modified text to include the GitHub link -->
+                    <p class="text-md text-slate-500 mt-2">A selection of my recent work. Click a project for a deep dive, or <a href="https://github.com/Infinite-Emi/Data-Presentations" target="_blank" class="text-cyan-600 hover:text-cyan-700 font-semibold underline">explore more on GitHub</a>.</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     <!-- PROJECT CARD 1 -->
-                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" onclick="openModal('galaxyModal')">
+                    <!-- Added data-modal-id attribute for JavaScript event handling -->
+                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" data-modal-id="galaxyModal">
                         <img src="https://placehold.co/600x400/06b6d4/FFFFFF?text=Galaxy+Project" alt="Astronomical Image Classification Project" class="rounded-xl mb-6 w-full h-48 object-cover">
                         <h3 class="text-2xl font-bold mb-2">Astronomical Image Classification</h3>
                         <p class="text-slate-600 mb-4">A deep dive into building and training CNNs to automate the classification of galaxies, tackling real-world challenges like massive datasets and class imbalance.</p>
@@ -208,11 +211,12 @@
                     </div>
 
                     <!-- PROJECT CARD 2 -->
-                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" onclick="openModal('treeModal')">
+                    <!-- Added data-modal-id attribute for JavaScript event handling -->
+                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" data-modal-id="treeModal">
                         <img src="https://placehold.co/600x400/14b8a6/FFFFFF?text=Tree+Project" alt="Tree Species Recognition Project" class="rounded-xl mb-6 w-full h-48 object-cover">
                         <h3 class="text-2xl font-bold mb-2">Tree Species Recognition</h3>
                         <p class="text-slate-600 mb-4">A structured scientific investigation into overcoming class imbalance in aerial imagery to improve model fairness and performance for rare species.</p>
-                         <div class="flex flex-wrap gap-2 mb-6">
+                           <div class="flex flex-wrap gap-2 mb-6">
                             <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs font-mono">Python</span>
                              <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs font-mono">AI Ethics</span>
                             <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-xs font-mono">CNN</span>
@@ -221,11 +225,12 @@
                     </div>
 
                     <!-- PROJECT CARD 3 -->
-                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" onclick="openModal('salesModal')">
+                    <!-- Added data-modal-id attribute for JavaScript event handling -->
+                    <div class="project-card bg-white rounded-2xl p-8 shadow-sm cursor-pointer" data-modal-id="salesModal">
                         <img src="https://placehold.co/600x400/6366f1/FFFFFF?text=Sales+Analysis" alt="Electronic Sales Analysis Project" class="rounded-xl mb-6 w-full h-48 object-cover">
                         <h3 class="text-2xl font-bold mb-2">Electronic Sales Analysis</h3>
                         <p class="text-slate-600 mb-4">An exploratory data analysis of a synthetic sales dataset to identify key business insights, from top-performing products to customer demographics and purchase patterns.</p>
-                         <div class="flex flex-wrap gap-2 mb-6">
+                           <div class="flex flex-wrap gap-2 mb-6">
                             <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-mono">Python</span>
                              <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-mono">Pandas</span>
                             <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-mono">Data Visualization</span>
@@ -239,16 +244,16 @@
         <!-- ==== CONTACT SECTION ==== -->
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-                 <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">I'm always open to discussing new opportunities and interesting projects. Feel free to reach out via email or connect with me on LinkedIn.</p>
-                 <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-                     <a href="mailto:emilywinter001@gmail.com" class="text-lg font-semibold text-cyan-700 hover:text-cyan-800">emilywinter001@gmail.com</a>
-                     <div class="flex space-x-4">
-                        <a href="https://www.linkedin.com/in/emily-wills-49a226276/" class="text-slate-500 hover:text-cyan-600" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/Infinite-Emi" class="text-slate-500 hover:text-cyan-600" target="_blank">GitHub</a>
-                     </div>
-                 </div>
-             </div>
+                   <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                   <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">I'm always open to discussing new opportunities and interesting projects. Feel free to reach out via email or connect with me on LinkedIn.</p>
+                   <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                       <a href="mailto:emilywinter001@gmail.com" class="text-lg font-semibold text-cyan-700 hover:text-cyan-800">emilywinter001@gmail.com</a>
+                       <div class="flex space-x-4">
+                         <a href="https://www.linkedin.com/in/emily-wills-49a226276/" class="text-slate-500 hover:text-cyan-600" target="_blank">LinkedIn</a>
+                         <a href="https://github.com/Infinite-Emi" class="text-slate-500 hover:text-cyan-600" target="_blank">GitHub</a>
+                       </div>
+                   </div>
+               </div>
         </section>
     </main>
 
@@ -256,10 +261,11 @@
     
     <!-- ** MODAL FIX APPLIED HERE ** -->
     <!-- Changed 'items-center' to 'items-start' and added 'pt-16' to align the modal to the top. -->
-    <div id="galaxyModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('galaxyModal')">
+    <!-- Added aria-modal and role for accessibility -->
+    <div id="galaxyModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-start justify-center p-4 sm:p-8 pt-16 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="galaxyModalTitle">
         <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-full overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
-            <button onclick="closeModal('galaxyModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
-            <h2 class="text-3xl font-bold mb-2">Project: Automating Astronomical Discovery</h2>
+            <button onclick="closeModal('galaxyModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none" aria-label="Close modal">&times;</button>
+            <h2 id="galaxyModalTitle" class="text-3xl font-bold mb-2">Project: Automating Astronomical Discovery</h2>
             <p class="text-slate-600 mb-6">This project addressed the real-world challenge of classifying galaxy images at a scale beyond human capacity, inspired by the Galaxy Zoo citizen science project. The goal was to build a robust deep learning model capable of automating this complex visual task.</p>
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
@@ -279,20 +285,21 @@
     </div>
 
     <!-- ** MODAL FIX APPLIED HERE ** -->
-    <div id="treeModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('treeModal')">
+    <!-- Added aria-modal and role for accessibility -->
+    <div id="treeModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-start justify-center p-4 sm:p-8 pt-16 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="treeModalTitle">
         <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-full overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
-            <button onclick="closeModal('treeModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
-            <h2 class="text-3xl font-bold mb-2">Project: Tackling Class Imbalance in Tree Species Recognition</h2>
+            <button onclick="closeModal('treeModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none" aria-label="Close modal">&times;</button>
+            <h2 id="treeModalTitle" class="text-3xl font-bold mb-2">Project: Tackling Class Imbalance in Tree Species Recognition</h2>
             <p class="text-slate-600 mb-6">This project was a structured scientific investigation into one of machine learning's most common hurdles: class imbalance. Using aerial imagery of German forests, I systematically tested different techniques to improve model fairness and performance for rare tree species.</p>
             <div class="text-center mb-6">
                 <p class="text-lg font-semibold mb-2">Explore the Experiments</p>
                 <p class="text-sm text-slate-500 mb-4">Select an experimental model to see how different strategies impacted the trade-off between precision and recall.</p>
                 <div id="exp-buttons" class="flex flex-wrap justify-center gap-2">
                     <button data-exp="0" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Baseline Model</button>
-                    <button data-exp="1" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Reduced Granularity</button>
-                    <button data-exp="2" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Added Augmentation</button>
-                    <button data-exp="3" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Class Weighting</button>
-                    <button data-exp="4" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300">Deeper Model</button>
+                    <button data-exp="1" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border-gray-300">Reduced Granularity</button>
+                    <button data-exp="2" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border-gray-300">Added Augmentation</button>
+                    <button data-exp="3" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border-gray-300">Class Weighting</button>
+                    <button data-exp="4" class="btn-exp bg-white text-gray-700 px-4 py-2 rounded-lg border-gray-300">Deeper Model</button>
                 </div>
             </div>
             <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -312,10 +319,11 @@
     </div>
 
     <!-- ** MODAL FIX APPLIED HERE ** -->
-    <div id="salesModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-8 opacity-0 pointer-events-none" onclick="closeModal('salesModal')">
+    <!-- Added aria-modal and role for accessibility -->
+    <div id="salesModal" class="modal fixed top-[64px] inset-x-0 bottom-0 bg-black bg-opacity-50 flex items-start justify-center p-4 sm:p-8 pt-16 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="salesModalTitle">
         <div class="modal-content bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-full overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
-            <button onclick="closeModal('salesModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none">&times;</button>
-            <h2 class="text-3xl font-bold mb-6">Project: Electronic Sales Analysis</h2>
+            <button onclick="closeModal('salesModal')" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 text-3xl leading-none" aria-label="Close modal">&times;</button>
+            <h2 id="salesModalTitle" class="text-3xl font-bold mb-6">Project: Electronic Sales Analysis</h2>
             <div class="space-y-6">
                 <div>
                     <h3 class="font-bold text-lg mb-2">The Goal</h3>
@@ -347,25 +355,46 @@
     <script>
         let salesChartInstance; 
 
+        /**
+         * Opens a specified modal by removing opacity and pointer-events-none classes,
+         * and prevents body scrolling.
+         * @param {string} modalId - The ID of the modal to open.
+         */
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'hidden';
+            // Ensure the modal is visible and interactive
+            modal.style.display = 'flex'; // Explicitly set display to flex
 
+            document.body.style.overflow = 'hidden'; // Prevent scrolling on the background
+
+            // If the sales modal is opened for the first time, render its chart
             if (modalId === 'salesModal' && !salesChartInstance) {
                 renderSalesChart();
             }
         }
 
+        /**
+         * Closes a specified modal by adding opacity and pointer-events-none classes,
+         * and restores body scrolling.
+         * @param {string} modalId - The ID of the modal to close.
+         */
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'auto';
+            // Hide the modal completely after transition
+            modal.addEventListener('transitionend', function handler() {
+                modal.style.display = 'none';
+                modal.removeEventListener('transitionend', handler);
+            });
+            document.body.style.overflow = 'auto'; // Restore scrolling on the background
         }
 
+        // Listener to close any open modal when the Escape key is pressed
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 document.querySelectorAll('.modal').forEach(modal => {
+                    // Check if the modal is currently visible (not pointer-events-none)
                     if (!modal.classList.contains('pointer-events-none')) {
                         closeModal(modal.id);
                     }
@@ -373,21 +402,39 @@
             }
         });
         
+        // Ensure DOM content is fully loaded before initializing charts and event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            
+            // Initially hide all modals
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+
+            // Add event listeners to project cards to open respective modals
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal-id');
+                    if (modalId) {
+                        openModal(modalId);
+                    }
+                });
+            });
+
+            // Data for the Galaxy Distribution Chart
             const galaxyData = {
                 labels: ['Disturbed', 'Merging', 'Round Smooth', 'In-between Smooth', 'Cigar Shaped Smooth', 'Barred Spiral', 'Unbarred Tight Spiral', 'Unbarred Loose Spiral', 'Edge-on without Bulge', 'Edge-on with Bulge'],
                 counts: [601, 338, 2872, 2315, 335, 2736, 2758, 2697, 219, 2865]
             };
             
+            // Data for the Tree Species Recognition experiments
             const treeExperimentData = [
                 { name: "Baseline Model", description: "The initial model shows a significant disparity. It achieves high precision on majority classes but very low recall for under-represented species, meaning it often fails to identify them.", precision: 0.38, recall: 0.28, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Conv2D', detail: '32 filters' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', detail: '20 units (Softmax)' }] },
                 { name: "Reduced Granularity", description: "By grouping 20 species into 10 broader classes, the model's task becomes simpler. This improves both precision and recall, but loses fine-grained classification detail.", precision: 0.65, recall: 0.61, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Conv2D', detail: '32 filters' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', detail: '10 units (Softmax)' }] },
-                { name: "Added Augmentation", description: "Introducing random translations during training helps the model generalize better from the limited data. This provides a moderate boost to both precision and recall.", precision: 0.45, recall: 0.35, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Data Augmentation', detail: 'Random Translations' }, { type: 'Conv2D', detail: '32 filters' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', detail: '20 units (Softmax)' }] },
-                { name: "Class Weighting", description: "This technique forces the model to pay more attention to rare classes. It dramatically improves recall for minority classes but harms overall precision, showing a critical trade-off.", precision: 0.16, recall: 0.51, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Conv2D', detail: '32 filters (Class Weights Applied)' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', detail: '20 units (Softmax)' }] },
+                { name: "Added Augmentation", description: "Introducing random translations during training helps the model generalize better from the limited data. This provides a moderate boost to both precision and recall.", precision: 0.45, recall: 0.35, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Data Augmentation', detail: 'Random Translations' }, { type: 'Conv2D', detail: '32 filters' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', 'detail': '20 units (Softmax)' }] },
+                { name: "Class Weighting", description: "This technique forces the model to pay more attention to rare classes. It dramatically improves recall for minority classes but harms overall precision, showing a critical trade-off.", precision: 0.16, recall: 0.51, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Conv2D', detail: '32 filters (Class Weights Applied)' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '64 units' }, { type: 'Dense', 'detail': '20 units (Softmax)' }] },
                 { name: "Deeper Model", description: "Increasing model complexity by adding more layers allows it to learn more intricate features. This results in a significant improvement in both precision and recall over the baseline.", precision: 0.59, recall: 0.52, architecture: [{ type: 'Input', detail: '60x60x3' }, { type: 'Conv2D', detail: '32 filters' }, { type: 'Conv2D', detail: '64 filters' }, { type: 'MaxPooling2D', detail: '' }, { type: 'Flatten', detail: '' }, { type: 'Dense', detail: '128 units' }, { type: 'Dense', 'detail': '20 units (Softmax)' }] }
             ];
 
+            // Data for the Confusion Matrix
             const confusionMatrixData = {
                 labels: ['Disturbed', 'Merging', 'Round Smooth', 'In-between', 'Cigar Shaped', 'Barred Spiral', 'Unbarred Tight', 'Unbarred Loose', 'Edge-on (no bulge)', 'Edge-on (w/ bulge)'],
                 values: [
@@ -395,12 +442,18 @@
                 ]
             };
             
+            /**
+             * Helper function to wrap long text labels for charts.
+             * @param {string} text - The text to wrap.
+             * @param {number} maxChars - The maximum number of characters per line.
+             * @returns {string[]} An array of strings, each representing a line.
+             */
             function wrapText(text, maxChars) {
                 const words = text.split(' ');
                 let lines = [];
                 let currentLine = '';
                 words.forEach(word => {
-                    if ((currentLine + ' ' + word).length > maxChars) {
+                    if ((currentLine + ' ' + word).length > maxChars && currentLine !== '') {
                         lines.push(currentLine);
                         currentLine = word;
                     } else {
@@ -411,41 +464,61 @@
                 return lines;
             }
 
+            // Initialize the Galaxy Distribution Chart (horizontal bar chart)
             const ctxGalaxy = document.getElementById('galaxyDistChart');
             if (ctxGalaxy) {
                 new Chart(ctxGalaxy, {
                     type: 'bar',
                     data: { 
-                        labels: galaxyData.labels.map(l => wrapText(l, 15)),
+                        labels: galaxyData.labels.map(l => wrapText(l, 15)), // Wrap labels for better readability
                         datasets: [{ 
                             label: 'Number of Images', 
                             data: galaxyData.counts, 
-                            backgroundColor: '#06b6d4',
-                            borderColor: '#0891b2',
+                            backgroundColor: '#06b6d4', // Cyan color
+                            borderColor: '#0891b2',     // Darker cyan border
                             borderWidth: 1 
                         }] 
                     },
                     options: { 
-                        responsive: true, maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        plugins: { legend: { display: false } },
-                        scales: { x: { grid: { display: false }, title: { display: true, text: 'Image Count' } } }
+                        responsive: true, 
+                        maintainAspectRatio: false, // Allows chart to resize without fixed aspect ratio
+                        indexAxis: 'y', // Makes it a horizontal bar chart
+                        plugins: { legend: { display: false } }, // Hides the legend
+                        scales: { 
+                            x: { 
+                                grid: { display: false }, // Hides x-axis grid lines
+                                title: { display: true, text: 'Image Count' } // Adds x-axis title
+                            },
+                            y: { // Y-axis specific options
+                                ticks: {
+                                    font: { size: 10 } // Smaller font for Y-axis labels
+                                }
+                            }
+                        }
                     }
                 });
             }
 
+            // Generate and display the Confusion Matrix
             const matrixContainer = document.getElementById('confusionMatrix');
             if(matrixContainer){
                 let tableHTML = '<table class="w-full border-collapse">';
                 tableHTML += '<thead><tr><th class="p-1 border border-gray-300 bg-gray-100">Actual ↓</th>';
-                confusionMatrixData.labels.forEach(l => { tableHTML += `<th class="p-1 border border-gray-300 bg-gray-100 align-bottom" style="writing-mode: vertical-rl; transform: rotate(180deg);">${l}</th>` });
+                // Add predicted labels as column headers, rotated vertically
+                confusionMatrixData.labels.forEach(l => { 
+                    tableHTML += `<th class="p-1 border border-gray-300 bg-gray-100 align-bottom" style="writing-mode: vertical-rl; transform: rotate(180deg);">${l}</th>` 
+                });
                 tableHTML += '</tr></thead><tbody>';
+                // Populate the table with confusion matrix values
                 confusionMatrixData.values.forEach((row, i) => {
-                    tableHTML += `<tr><th class="p-1 border border-gray-300 bg-gray-100 text-left">${confusionMatrixData.labels[i]}</th>`;
+                    tableHTML += `<tr><th class="p-1 border border-gray-300 bg-gray-100 text-left">${confusionMatrixData.labels[i]}</th>`; // Actual label row header
                     row.forEach((val, j) => {
-                        const isDiagonal = i === j;
+                        const isDiagonal = i === j; // Check if it's a correct prediction (diagonal)
+                        // Dynamic background color based on value and whether it's a diagonal cell
                         const bgColor = isDiagonal ? `rgba(6, 182, 212, ${val / 500})` : `rgba(249, 115, 22, ${val / 100})`;
+                        // Dynamic text color for readability against background
                         const textColor = (isDiagonal && val > 200) || (!isDiagonal && val > 50) ? 'text-white' : 'text-gray-800';
+                        // Add cell with value and title for hover details
                         tableHTML += `<td class="p-1 border border-gray-300 text-center font-medium ${textColor}" style="background-color: ${bgColor}" title="Predicted: ${confusionMatrixData.labels[j]}, Actual: ${confusionMatrixData.labels[i]}">${val}</td>`;
                     });
                     tableHTML += '</tr>';
@@ -454,66 +527,106 @@
                 matrixContainer.innerHTML = tableHTML;
             }
 
-            let treeChart;
+            let treeChart; // Chart instance for Tree Performance
             const ctxTree = document.getElementById('treePerfChart');
             if (ctxTree) {
                 treeChart = new Chart(ctxTree, {
-                    type: 'bar', 
-                    data: { labels: ['Performance'], datasets: [{ label: 'Precision', data: [0], backgroundColor: '#06b6d4' }, { label: 'Recall', data: [0], backgroundColor: '#14b8a6' }] },
-                    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 1.0, title: { display: true, text: 'Score' } } } }
+                    type: 'bar', // Bar chart for Precision and Recall
+                    data: { 
+                        labels: ['Performance'], // Single label for the bar groups
+                        datasets: [
+                            { label: 'Precision', data: [0], backgroundColor: '#06b6d4' }, // Initial data for Precision
+                            { label: 'Recall', data: [0], backgroundColor: '#14b8a6' }    // Initial data for Recall
+                        ] 
+                    },
+                    options: { 
+                        responsive: true, 
+                        maintainAspectRatio: false,
+                        scales: { 
+                            y: { 
+                                beginAtZero: true, 
+                                max: 1.0, // Max value for scores (0 to 1)
+                                title: { display: true, text: 'Score' } 
+                            } 
+                        },
+                        plugins: { legend: { position: 'bottom' } } // Legend at the bottom
+                    }
                 });
             }
 
+            // Get references to elements for Tree Experiment updates
             const expButtons = document.getElementById('exp-buttons');
             const expTitle = document.getElementById('exp-title');
             const expDesc = document.getElementById('exp-desc');
             const modelViz = document.getElementById('model-viz');
 
+            /**
+             * Updates the Tree Experiment modal content based on the selected experiment.
+             * @param {number} expIndex - The index of the experiment data to display.
+             */
             function updateTreeExperiment(expIndex) {
                 const data = treeExperimentData[expIndex];
+                // Update chart data and re-render
                 if (treeChart) { 
                     treeChart.data.datasets[0].data = [data.precision];
                     treeChart.data.datasets[1].data = [data.recall];
                     treeChart.update();
                 }
+                // Update title and description
                 if(expTitle) expTitle.textContent = data.name;
                 if(expDesc) expDesc.textContent = data.description;
                 
+                // Update model architecture visualization
                 if(modelViz){
                     let archHTML = '';
                     data.architecture.forEach((layer, index) => {
                         archHTML += `<div class="bg-gray-100 p-2 rounded text-center">${layer.type} <span class="text-gray-500">${layer.detail}</span></div>`;
+                        // Add a downward arrow between layers
                         if(index < data.architecture.length -1) { archHTML += `<div class="text-center text-gray-400">↓</div>`; }
                     });
                     modelViz.innerHTML = archHTML;
                 }
+                // Update active button styling
                 document.querySelectorAll('.btn-exp').forEach(btn => { btn.classList.remove('active-btn'); });
                 document.querySelector(`.btn-exp[data-exp='${expIndex}']`).classList.add('active-btn');
             }
             
+            // Add event listener to the experiment buttons container
             if(expButtons) {
                 expButtons.addEventListener('click', (e) => {
+                    // Check if a button was clicked
                     if (e.target.tagName === 'BUTTON') {
                         const expIndex = e.target.getAttribute('data-exp');
-                        updateTreeExperiment(expIndex);
+                        updateTreeExperiment(expIndex); // Update content based on button's data-exp attribute
                     }
                 });
-                updateTreeExperiment(0);
+                updateTreeExperiment(0); // Initialize with the Baseline Model data on load
             }
         });
         
+        /**
+         * Renders the Sales Analysis chart (combination of bar and line chart).
+         * This function is called only when the sales modal is opened for the first time.
+         */
         function renderSalesChart() {
             const ctx = document.getElementById('salesChart').getContext('2d');
             
+            // Monthly sales revenue data
             const monthlySalesData = {
                 labels: ['Sep 23', 'Oct 23', 'Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24'],
                 data: [481961.79, 2318466.35, 2068434.14, 1980700.33, 6619498.15, 5733696.06, 6324367.84, 6418253.62, 6709042.93, 6668633.59, 6535129.52, 6706118.61, 5037691.12]
             };
+            // Product revenue data
             const productRevenueData = {
                 labels: ['Smartphone', 'Smartwatch', 'Laptop', 'Tablet', 'Headphones'],
                 data: [21516754.69, 14036273.06, 12295565.65, 11712000.41, 4041400.24]
             };
 
+            /**
+             * Formats numbers into human-readable format (e.g., 1.2M, 500K).
+             * @param {number} num - The number to format.
+             * @returns {string} The formatted string.
+             */
             const humanFormat = (num) => {
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
@@ -521,41 +634,55 @@
             };
 
             salesChartInstance = new Chart(ctx, {
-                type: 'bar',
+                type: 'bar', // Default type for the first dataset
                 data: {
-                    labels: monthlySalesData.labels,
+                    labels: monthlySalesData.labels, // Labels for the X-axis
                     datasets: [{
                         label: 'Monthly Revenue',
                         data: monthlySalesData.data,
-                        backgroundColor: '#0891b2',
-                        yAxisID: 'y',
+                        backgroundColor: '#0891b2', // Cyan color for bars
+                        yAxisID: 'y', // Assign to the first Y-axis
                     }, {
                         label: 'Total Product Revenue',
-                        type: 'line',
+                        type: 'line', // This dataset will be a line chart
                         data: productRevenueData.data,
-                        yAxisID: 'y2',
-                        borderColor: '#db2777',
-                        tension: 0.1,
-                        fill: false
+                        yAxisID: 'y2', // Assign to the second Y-axis
+                        borderColor: '#db2777', // Rose color for the line
+                        tension: 0.1, // Smoothness of the line
+                        fill: false // Do not fill area under the line
                     }]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
+                    responsive: true, 
+                    maintainAspectRatio: false,
                     plugins: { 
-                        tooltip: {
+                        tooltip: { // Custom tooltip formatting
                             callbacks: {
                                 label: function(context) {
                                     let label = context.dataset.label || '';
                                     if (label) { label += ': '; }
+                                    // Format the value as currency
                                     if (context.parsed.y !== null) { label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y); }
                                     return label;
                                 }
                             }
-                        }
+                        },
+                        legend: { position: 'top' } // Legend at the top
                     },
                     scales: {
-                        y: { type: 'linear', position: 'left', title: { display: true, text: 'Monthly Revenue' }, ticks: { callback: humanFormat } },
-                        y2: { type: 'linear', position: 'right', title: { display: true, text: 'Total Product Revenue' }, grid: { drawOnChartArea: false }, ticks: { callback: humanFormat } }
+                        y: { 
+                            type: 'linear', 
+                            position: 'left', 
+                            title: { display: true, text: 'Monthly Revenue' }, 
+                            ticks: { callback: humanFormat } // Use humanFormat for Y-axis ticks
+                        },
+                        y2: { 
+                            type: 'linear', 
+                            position: 'right', 
+                            title: { display: true, text: 'Total Product Revenue' }, 
+                            grid: { drawOnChartArea: false }, // Hide grid lines for this axis
+                            ticks: { callback: humanFormat } // Use humanFormat for Y2-axis ticks
+                        }
                     }
                 }
             });
