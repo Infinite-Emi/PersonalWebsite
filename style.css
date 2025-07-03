@@ -1,0 +1,144 @@
+/* Custom styles to complement Tailwind */
+body {
+    background-color: #0f172a; /* slate-900 */
+    background-image:
+        linear-gradient(30deg, rgba(248, 113, 113, 0.05) 1px, transparent 1px),
+        linear-gradient(-30deg, rgba(248, 113, 113, 0.05) 1px, transparent 1px);
+    background-size: 34px 60px;
+    animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+    0% { background-position: 0 0; }
+    100% { background-position: -68px -120px; }
+}
+
+.font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* --- Hero Section Parallax --- */
+.hero-background {
+    background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
+    background-position: center center;
+    background-size: cover;
+}
+
+
+/* --- Header Navigation --- */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #f87171;
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover {
+    color: #f87171; /* Bright red */
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Section Title Glitch/Flicker Animation --- */
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    -webkit-text-stroke: 1px #f87171;
+    color: transparent;
+    animation: lightning-flicker 5s linear infinite;
+}
+
+@keyframes lightning-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 10px #f87171,
+            0 0 40px #f87171,
+            0 0 150px #ef4444;
+    }
+    20%, 24%, 55% { 
+        text-shadow: none;
+    }
+}
+
+/* --- Modals and Cards --- */
+.modal {
+    transition: opacity 0.3s ease;
+}
+.modal-content {
+    transition: transform 0.3s ease;
+}
+.project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(248, 113, 113, 0.25); /* Sci-fi red glow effect */
+}
+
+/* Styles for responsive chart containers. */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+    max-height: 50vh;
+}
+/* Adjusts chart height on smaller screens. */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+        max-height: 60vh;
+    }
+}
+/* Styles the active button in the tree project. */
+.active-btn {
+    background-color: #f87171 !important;
+    color: #0f172a !important; /* Dark text for contrast */
+    transform: scale(1.05);
+    border-color: #f87171 !important;
+}
+/* Adds a transition to experiment buttons. */
+.btn-exp {
+    transition: all 0.2s ease-in-out;
+}
+.btn-exp:hover {
+    border-color: #f87171;
+    color: #f87171;
+}
+
+/* --- Mobile Menu Animation --- */
+#mobile-menu {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    border-top: 1px solid rgba(248, 113, 113, 0.2);
+}
+#mobile-menu.menu-open {
+    transform: scaleY(1);
+}
+.mobile-nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid rgba(248, 113, 113, 0.1);
+    font-weight: 700;
+}
+.mobile-nav-link:hover {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+}
+/* Last link doesn't need a border */
+#mobile-menu a:last-child {
+    border-bottom: none;
+}
